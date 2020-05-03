@@ -4,8 +4,13 @@ import 'pnotify/dist/es/PNotifyAnimate';
 
 export default {
   totalNummber(totalValue) {
-    PNotify.success({
+    const notice = PNotify.notice({
       text: `We found ${totalValue} images!`,
+      closer: false,
+      sticker: false,
+    });
+    notice.on('click', () => {
+      notice.close();
     });
   },
 };

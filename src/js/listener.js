@@ -30,7 +30,12 @@ class ImageData {
 
   set page(value) {
     this._page = value;
-    this.getDataContent().then();
+    this.getDataContent().then(
+      window.scrollTo({
+        top: document.documentElement.clientHeight,
+        behavior: 'smooth',
+      }),
+    );
   }
 
   getDataContent(isReset) {
@@ -79,10 +84,6 @@ class ImageData {
   onLoadButtonClick(event) {
     event.preventDefault();
     this.page = this._page + 1;
-    window.scrollTo({
-      top: screen.height,
-      behavior: 'smooth',
-    });
   }
 
   onEnterClick() {
