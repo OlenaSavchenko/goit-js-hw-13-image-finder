@@ -30,12 +30,7 @@ class ImageData {
 
   set page(value) {
     this._page = value;
-    this.getDataContent().then(
-      window.scrollTo({
-        top: document.documentElement.clientHeight,
-        behavior: 'smooth',
-      }),
-    );
+    this.getDataContent();
   }
 
   getDataContent(isReset) {
@@ -52,9 +47,17 @@ class ImageData {
       })
       .then(() => {
         renderImages(this.images);
+      })
+      .then(() => {
         this.loadMoreBtn.show();
         this.loadMoreBtn.enable();
-      });
+      })
+      .then(() =>
+        window.scrollTo({
+          top: document.documentElement.clientHeight,
+          behavior: 'smooth',
+        }),
+      );
   }
 
   setListener() {
