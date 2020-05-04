@@ -54,7 +54,7 @@ class ImageData {
       })
       .then(() =>
         window.scrollTo({
-          top: document.documentElement.clientHeight,
+          top: document.documentElement.scrollHeight,
           behavior: 'smooth',
         }),
       );
